@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: rulesapirepos
-        image: anujretailbankingcr.azurecr.io/rulesapirepos:latest
+        image: retailbankingcr.azurecr.io/rulesapirepos:latest
         ports:
         - containerPort: 8080
       imagePullSecrets:
