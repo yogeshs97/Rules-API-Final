@@ -1,0 +1,33 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rulesapi-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: Rulesapi
+  template:
+    metadata:
+      labels:
+        app: Rulesapi
+    spec:
+      containers:
+      - name: rulesapirepos
+        image: anujretailbankingcr.azurecr.io/rulesapirepos:latest
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: dsconfigsn2
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rulesapi
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: Rulesapi
